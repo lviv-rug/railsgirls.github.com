@@ -1,50 +1,50 @@
 ---
 layout: default
-title: Adding Authentication with Devise
+title: Додаємо можливість реєстрації користувачів
 permalink: devise
 ---
 
-# Adding Authentication with Devise
+# Додаємо можливість реєстрації і аутентифікації користувачів Devise
 
 *Created by Piotr Steininger, [@polishprince](https://twitter.com/polishprince)*
 
 *Updated by Ernesto Jimenez, [@ernesto_jimenez](https://twitter.com/ernesto_jimenez)*
 
-**This guide assumes that you have already built a Rails Girls app by** [**following the app development guide**](/app).
+**Цей крок передбачає, що у вас уже є створений by** [**додаток Ideas**](/app).
 
 
-## *1.* Add devise gem
+## *1.*Додаємо бібліотеку (gem) devise
 
-Open up your `Gemfile` and add this line
+Відкриємо `Gemfile` і додамо ці рядки
 
 {% highlight ruby %}
 gem 'devise'
 {% endhighlight %}
-and run
+у консолі запустимо
 {% highlight sh %}
 bundle install
 {% endhighlight %}
-to install the gem. **Also remember to restart the Rails server**.
+щоб встановити gem. **Не забудь перезапустити Rails сервер**.
 
-## *2.* Set up devise in your app
+## *2.*Інтеграція Devise
 
-Run the following command in the terminal.
+Запустимо у терміналі:
 
 {% highlight sh %}
 rails g devise:install
 {% endhighlight %}
 
 
-## *3.* Configure Devise
+## *3.*Налаштування Devise
 
-Ensure you have defined default url options in your environments files. Open up `config/environments/development.rb` and add this line:
+Перевіримо, чи у нас описані url опції за замовчуванням. Відкриємо `config/environments/development.rb` та додамо:
 {% highlight ruby %}
    config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 {% endhighlight %}
 
-before the `end` keyword.
+перед словом `end`.
 
-Open up `app/views/layouts/application.html.erb` and add:
+Відкриємо `app/views/layouts/application.html.erb` і додамо:
 
 {% highlight erb %}
 <% if notice %>
@@ -54,41 +54,40 @@ Open up `app/views/layouts/application.html.erb` and add:
   <p class="alert alert-danger"><%= alert %></p>
 <% end %>
 {% endhighlight %}
-right above
+над рядками
 {% highlight ruby %}
    <%= yield %>
 {% endhighlight %}
 
-Open up `app/views/ideas/show.html.erb` and remove the line that says:
+Відкриємо `app/views/ideas/show.html.erb` і видаляємо рядок:
 
 {% highlight erb %}
 <p id="notice"><%= notice %></p>
 {% endhighlight %}
 
-Do the same for `app/views/comments/show.html.erb`. These lines are not necessary as we've put the notice in the `app/views/layouts/application.html.erb` file.
+робимо те саме у файлі `app/views/comments/show.html.erb`.
 
-## *4.* Setup the User model
+## *4.*Створюємо модель користувача
 
-We'll use a bundled generator script to create the User model.
+Ми використаємо bundled generator script для того, щоб створити модель користувача.
 {% highlight sh %}
    rails g devise user
    rails db:migrate
 {% endhighlight %}
 
-**Coach:** Explain what user model has been generated. What are the
-fields?
+**Наставник:** Пояснити що було згенеровано. Що таке поля?
 
-## *5.* Create your first user
+## *5.* Ствоюємо першого користувача
 
-Now that you have set everything up you can create your first user. Devise creates all the code and routes required to create accounts, log in, log out, etc.
+Тепер коли у нас усе встановлено, ми можемо створити першого користувача. Devise автоматично створює всі маршрути, щоб створити новий аккаунт, ввійти чи вийти з додатку.
 
-Make sure your rails server is running, open [http://localhost:3000/users/sign_up](http://localhost:3000/users/sign_up) and create your user account.
+Переконаємося, що rails сервер увімкнений, відкрий [http://localhost:3000/users/sign_up](http://localhost:3000/users/sign_up) та створи новий профайл користувача.
 
-## *6.* Add sign-up and login links
+## *6.*Додамо посилання для авторизації та реєстрації
 
-All we need to do now is to add appropriate links or notice about the user being logged in in the top right corner of the navigation bar.
+Все, що нам залишилось зробити, це додати відповідні посилання або повідомення у верхньому правому кутку про те,що користувач увійшов у свій профайл.
 
-In order to do that, edit `app/views/layouts/application.html.erb` add:
+Змінимо файл `app/views/layouts/application.html.erb` додаємо:
 {% highlight erb %}
 <p class="navbar-text pull-right">
 <% if user_signed_in? %>
@@ -101,30 +100,30 @@ In order to do that, edit `app/views/layouts/application.html.erb` add:
 <% end %>
 </p>
 {% endhighlight %}
-right after
+прямо над рядками
 {% highlight erb %}
 <ul class="nav">
   <li class="active"><a href="/ideas">Ideas</a></li>
 </ul>
 {% endhighlight %}
 
-Finally, force the user to redirect to the login page if the user was not logged in. Open up `app/controllers/application_controller.rb` and add:
+Також потрібно, щоб користувач переходив на сторінку авторизації, якщо він ще не увійшов у свій профайл. Для цього відкриваємо  `app/controllers/application_controller.rb` і додаємо:
 
 {% highlight ruby %}
   before_action :authenticate_user!
 {% endhighlight %}
 
-after `protect_from_forgery with: :exception`.
+після `protect_from_forgery with: :exception`.
 
-Open your browser and try logging in and out from.
+Відкрий браузер та спробуй увійти і вийти із профайлу.
 
-**Coach:** Talk about the `user_signed_in?` and `current_user` helpers. Why are they useful?
+**Наставник:** Розкажіть про `user_signed_in?` та `current_user`. Чим вони корисні?
 
-## What next?
+## Що далі?
 
-* Add extra fields to the User model
-* Add relationships between users and ideas
-* Restrict users to only be able to edit their own ideas and delete their own comments
-* Expand to use roles or permissions (use one of the popular authorization gem like CanCan)
+* Додамо додаткові поля до моделі користувача
+* Додамо зв'язки між користувачами та ідеями
+* Встановимо обмеження для користувачів
+* Розширимо функціонал із використанням ролей і рівнів доступу (можна використати популярні бібліотеки на кшталт CanCanCan, Rolify, тощо)
 
 

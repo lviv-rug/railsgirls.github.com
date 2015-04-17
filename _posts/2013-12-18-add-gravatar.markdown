@@ -1,64 +1,64 @@
 ---
 layout: default
-title: Adding Graviatar to you app
+title: Використання Gravatar
 permalink: gravatar
 ---
 
-# Adding Gravatar to your App
+# Використання Gravatar
 
 *Created by Catherine Jones*
 
-This guide assumes that you have already built a Rails Girls app by following this [app development guide](http://guides.railsgirls.com/app/) and added authentication using [Devise](http://guides.railsgirls.com/devise/).
+Цей туторіал передбачає, що у вас уже [створений додаток Ideas](http://guides.railsgirls.com/app/) та додана аутентифікація користувачів із [Devise](http://guides.railsgirls.com/devise/).
 
-### Important
+### Важливо!
 
-You need to have an e-mail address registered with Gravatar for this to work. If you do not already have one you can go to [gravatar.com](http://en.gravatar.com/).
+Необхідно мати e-mail адресу зареєстровану на Gravatar. Якщо у вас немає її перейдіть на [gravatar.com](http://en.gravatar.com/) і зареєструйтеся.
 
-## *1.* Add the Gravtastic gem
+## *1.* Додамо Gravtastic gem
 
-Open up your gemfile and under your `devise` gem add
+Відкриваємо gemfile та під `devise` gem додамо
 
 {% highlight ruby %}
 gem 'gravtastic'
 {% endhighlight %}
 
-In the terminal run
+у терміналі виконуємо:
 
 {% highlight sh %}
 bundle install
 {% endhighlight %}
 
-This will install the gravtastic gem. Then remember to restart your rails server.
+Ми встановили gravtastic gem. Не забудь перезапустити rails сервер.
 
-## *2.* Set up Gravatar in your app
+## *2.* Установка Gravatar
 
-Open `app/models/user.rb`, and add these lines
+Відкриваємо `app/models/user.rb`, і додаємо
 
 {% highlight ruby %}
 include Gravtastic
 gravtastic
 {% endhighlight %}
 
-right after the first line.
+одразу ж після першого рядка.
 
-## *3.* Configure Gravatar
+## *3.* Налаштування Gravatar
 
-Open `app/views/layouts/application.html.erb` and in the
+Відкриємо `app/views/layouts/application.html.erb` і у
 
 {% highlight erb %}
 <% if user_signed_in? %>
 {% endhighlight %}
 
-section but before the
+секції, але перед
 
 {% highlight erb %}
 <% else %>
 {% endhighlight %}
 
-add
+додамо
 
 {% highlight erb %}
 <%= image_tag current_user.gravatar_url %>
 {% endhighlight %}
 
-Now open you app in your browser and login with an e-mail address that is associated with a Gravatar. You should be able to see your Gravatar.
+Тепер відкрий у браузері додаток і ввійди у свій профайл використовуючи той e-mail, який пов'язаний із Gravatar. Ти маєш побачити свій Gravatar.

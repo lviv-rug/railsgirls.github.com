@@ -1,29 +1,29 @@
 ---
 layout: default
-title: Rails Girls on Heroku
+title: Розгортання Rails Girls на Heroku
 permalink: heroku
 ---
 
-# Put Your App Online With Heroku
+# Розгортання проекту на Heroku
 
 *Created by Terence Lee, [@hone02](https://twitter.com/hone02)*
 
-### Get Heroku
+### Встановлення інструментів Heroku та налаштування доступу
 
-Follow steps "Introduction" and "Set up" of the
-[Getting Started on Heroku with Ruby][heroku-guide] to sign up, install the
-Heroku CLI, and login.
+Для початку необхідно встановити [Heroku Toolbelt](https://devcenter.heroku.com/articles/getting-started-with-ruby#set-up) та [зареєструватись](https://signup.heroku.com/dc) на сервісі Heroku.
+Далі у командному рядку слід виконати наступну команду, у відповідь на запрошення ввести ім'я новоствореного користувача та пароль:
 
-__COACH__: Talk about the benefits of deploying to Heroku vs traditional servers.
+{% highlight sh %}
+heroku login
+{% endhighlight %}
 
-[heroku-guide]: https://devcenter.heroku.com/articles/getting-started-with-ruby#introduction
+**Наставник:** Розповісти про переваги використання Heroku на противагу традиційним сервісам.
 
-### Preparing your app
+### Підготуємо проект
 
-#### Version Control Systems
+#### Система контролю версій (VCS - Version Control System)
 
-We need to add our code to version control. You can do this by running the
-following in the terminal:
+Зараз нам потрібно додати проект у систему контролю версій. Для цього слід виконати в командному рядку наступну послідовність команд:
 
 {% highlight sh %}
 git init
@@ -31,18 +31,17 @@ git add .
 git commit -m "initial commit"
 {% endhighlight %}
 
-__COACH__: This would be a good time to talk about version control systems and git.
+**Наставник:** Зараз є хороша можливсть поговорити про системи контролю версій та, зокрема, git. Також варто пояснити про файл `.gitignore` та його вміст, а також чому не потрібно завантажувати деякі файли в репозиторій.
 
-#### Updating our database
+#### Зміна конфігурації бази даних
 
-First, we need to get our database to work on Heroku, which uses a different
-database. Please change the following in the Gemfile:
+Перш за все, нам потрібно, щоб на Heroku працювала база даних. Heroku та твоє локальне середовище використовують зовсім різні бази даних (локально - SQLite; на Heroku - PostgreSQL), тому потрібно внести певні зміни у файл Gemfile. Необхідно замінити цей рядок
 
 {% highlight ruby %}
 gem 'sqlite3'
 {% endhighlight %}
 
-to
+на наступний фрагмент:
 
 {% highlight ruby %}
 group :development do
@@ -53,32 +52,60 @@ group :production do
 end
 {% endhighlight %}
 
-Run `bundle install --without production` to setup your dependencies.
+Далі слід виконати команду `bundle install --without production`, щоб завантажити та встановити необхідні бібліотеки.
 
-Don't forget to do `git add .` and `git commit -m "Use postgres as production database"`
-in order to add this change to your master branch before pushing to heroku later.
+Не забудьте виконати команди `git add .` та `git commit -m "Use postgres as production database"`
+щоб додати ваші зміни до гілки `master` перед подальшою публікацією на heroku.
 
-__COACH__: You can talk about RDBMS and the different ones out there, plus
-include some details on Heroku's dependency on PostgreSQL.
+**Наставник:** Тут можна поговорити про різні реляційні бази даних, а також розповісти про особливу роль БД PostgreSQL у середовищі Heroku.
 
-### Deploying your app
+#### Додаємо rails_12factor
 
-#### App creation
+Далі нам потрібно додати бібліотеку `rails_12factor` до Gemfile, щоб мати змогу розгорнути проект на Heroku.
 
-We need to create our Heroku app by typing `heroku create` in the terminal and
-see something like this:
+Цей gem змінює конфігурацію Rails проекту для сумісності з Heroku. Наприклад, змінюється спосіб ведення лог-файлів та конфігурація статичних ресурсів (малюнки, CSS стилі, скрипти JavaScript) - так, щоб враховувались особливості середовища Heroku.
+
+Будь ласка, заміни цей фрагмент у Gemfile:
+
+{% highlight ruby %}
+group :production do
+  gem 'pg'
+end
+{% endhighlight %}
+
+на наступний:
+
+{% highlight ruby %}
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
+{% endhighlight %}
+
+Після цього виконай команду `bundle install` та додай змінені файли в репозиторій:
+
+{% highlight sh %}
+git commit -a -m "Added rails_12factor gem and updated Gemfile.lock"
+{% endhighlight %}
+
+**Наставник:** Можна поговорити про логування та інші особливості роботи з Heroku.
+
+### Розгортання проекту
+
+#### Створення нового додатка на Heroku
+
+Для створення нового Heroku додатка потрібно виконати в терміналі команду `heroku create`. В результаті вийде щось типу цього:
 
 {% highlight sh %}
 Creating app... done, ⬢ young-reaches-87845
 https://young-reaches-87845.herokuapp.com/ | https://git.heroku.com/young-reaches-87845.git
 {% endhighlight %}
 
-In this case "young-reaches-87845" is your app name.
+Тут "young-reaches-87845" - автоматично згенерована назва Heroku додатка. Можна вказати і свою назву, але вона має бути унікальною (скоріше за все, назви "railsgirls" та "helloworld" вже хтось використав до тебе, тому доведеться придумати щось оригінальніше).
 
-#### Pushing the code
+#### Публікуємо код
 
-Next we need to push our code to heroku by typing `git push heroku master`.
-You'll see push output like the following:
+Тепер потрібно завантажити готовий код проекту у репозиторій Heroku (все решта буде зроблено автоматично). Для цього треба виконати в терміналі команду `git push heroku master`; результат буде виглядати приблизно так:
 
 {% highlight sh %}
 Counting objects: 115, done.
@@ -108,19 +135,19 @@ To https://git.heroku.com/young-reaches-87845.git
  * [new branch]      master -> master
 {% endhighlight %}
 
-You'll know the app is done being pushed, when you see the "Launching..." text like above.
+Коли з'явиться рядок "Launching... done", це означає, що твій додаток опублікований. Ура!
 
-#### Migrate database
+#### Міграція бази даних
 
-Next we need to migrate our database like we did locally during the workshop:
+Далі слід мігрувати базу даних - щось подібне ти вже робила на локальному середовищі. Зараз ця команда виглядатиме так:
 
 {% highlight sh %}
-heroku run rails db:migrate
+heroku run rake db:migrate
 {% endhighlight %}
 
-When that command is finished being run, you can hit the app based on the url.
-For this example app, you can go to <https://young-reaches-87845.herokuapp.com/>.
-You can also type `heroku open` in the terminal to visit the page.
+### Затамувавши подих, запускаємо!
+
+Тепер можна спробувати зайти на адресу програми і подивитись результат у браузері. Адреса (URL) буде виглядати якось так: <https://young-reaches-87845.herokuapp.com/> (звісно, замість ідентифікатора 'sheltered-refuge-6377' буде щось інше). Ще один цікавий спосіб - виконати в терміналі команду `heroku open`, і браузер сам відкриється на потрібній сторінці.
 
 #### Closing notes
 

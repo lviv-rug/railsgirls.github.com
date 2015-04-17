@@ -1,57 +1,61 @@
 ---
 layout: default
-title: Commenting functionality for the Rails Girls app
+title: Функціональність роботи з коментарями для додатку Rails Girls
 permalink: commenting
 ---
-# Commenting for Rails Girls App
+# Додаємо коментування до Rails Girls App
 *Created by Janika Liiv, [@janikaliiv](https://twitter.com/janikaliiv)*
 
-We are going to add the possibility to comment on ideas in your *railsgirls* application.
+Зараз ми реалізуємо можливість додавання *коментарів* до *ідей* у твоїй першій Rails програмі.
 
-The instructions for installing rails and building the ideas app can be found [here](/app).
+Всі інструкції з початкового налаштування середовища Rails та побудови основної функціональності програми можна знайти [тут](/app).
 
-## *1.* Create comment scaffold
+## *1.*Створюємо scaffold для коментарів
 
-Create a comment scaffold, with the commentator name, the comment body (contents of the comment) and with the reference to the ideas table (`idea_id`).
+Потрібно створити scaffold для сутності 'коментар', що містить: ім'я коментатора, власне коментар (текст), ну і посилання на ідею, якої стосується даний коментар (`idea_id`).
 {% highlight sh %}
 rails g scaffold comment user_name:string body:text idea_id:integer
 {% endhighlight %}
-This will create a migration file that lets your database know about the new comments table. Run the migrations using
+Ця команда створить, зокрема, сценарій *міграції*, що "повідомить" базу даних про те, що створюється нова таблиця з коментарями. Цю міграцію треба виконати, запустивши в терміналі команду
 {% highlight sh %}
 rails db:migrate
 {% endhighlight %}
 
-## *2.* Add relations to models
+## *2.*Додаємо зв'язки між моделями
 
-You need to make sure that Rails knows the relation between objects (ideas and comments).
-As one idea can have many comments we need to make sure the idea model knows that.
-Open `app/models/idea.rb` and below the row
+Ще треба зробити так, щоб Rails програма знала про зв'язки між моделями (ідеї та коментарі).
+До однієї ідеї можна створити декілька коментарів, отже, в даному випадку буде співвідношення один-до-багатьох (одна ідея - багато коментарів).
+
+Відкрий файл `app/models/idea.rb` та одразу після рядка
+
 {% highlight ruby %}
 class Idea < ApplicationRecord
 {% endhighlight %}
-add
+додай
 {% highlight ruby %}
 has_many :comments
 {% endhighlight %}
 
-The comment also has to know that it belongs to an idea. So open `app/models/comment.rb` and below
+Моделі 'коментар' також потрібно вказати, що вона належить до 'ідеї' (звісно, що так - коментар не може існувати сам по собі). Отже, відкрий файл `app/models/comment.rb` та після рядка
+
 {% highlight ruby %}
 class Comment < ApplicationRecord
 {% endhighlight %}
 
-add the row
+додай
 {% highlight ruby %}
 belongs_to :idea
 {% endhighlight %}
 
-## *3.* Render the comment form and existing comments
+## *3.*Малюємо форму для додавання нового коментаря та показуємо коментарі до ідей
 
-Open `app/views/ideas/show.html.erb` and after the image_tag
+Відкрий файл `app/views/ideas/show.html.erb` та після `image_tag`
+
 {% highlight erb %}
 <%= image_tag(@idea.picture_url, :width => 600) if @idea.picture.present? %>
 {% endhighlight %}
 
-add
+додай
 {% highlight erb %}
 <h3>Comments</h3>
 <% @comments.each do |comment| %>
@@ -65,13 +69,18 @@ add
 <%= render partial: 'comments/form', locals: { comment: @comment } %>
 {% endhighlight %}
 
-In `app/controllers/ideas_controller.rb` add to the show method
+У контролері `app/controllers/ideas_controller.rb` до екшена 'show' після рядка
+{% highlight ruby %}
+@idea = Idea.find(params[:id])
+{% endhighlight %}
+
+додай цей фрагмент коду:
 {% highlight ruby %}
 @comments = @idea.comments.all
 @comment = @idea.comments.build
 {% endhighlight %}
 
-Open `app/views/comments/_form.html.erb` and after
+Також відкрий файл `app/views/comments/_form.html.erb` та після
 {% highlight erb %}
   <div class="field">
     <%= form.label :body %><br>
@@ -79,12 +88,12 @@ Open `app/views/comments/_form.html.erb` and after
   </div>
 {% endhighlight %}
 
-add the row
+додай рядок
 {% highlight erb %}
 <%= form.hidden_field :idea_id %>
 {% endhighlight %}
 
-next, remove
+і ще видали кілька зайвих рядків:
 {% highlight erb %}
 <div class="field">
   <%= form.label :idea_id %><br>
@@ -92,4 +101,5 @@ next, remove
 </div>
 {% endhighlight %}
 
-That's it. Now view an idea you have inserted to your application and there you should see the form for inserting a comment as well as deleting older comments.
+Це все. Тепер поряд з самою ідеєю можна побачити коментарі до неї, а також форму для створення нових коментарів та видалення існуючих.
+Вітаю, ще один важливий крок зроблено!
