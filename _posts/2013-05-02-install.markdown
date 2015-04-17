@@ -1,15 +1,14 @@
 ---
 layout: default
-title: Setup recipe for Rails Girls
+title: Установка необхідних програм для Rails Girls
 permalink: install
 ---
 
-# Setup recipe for Rails Girls
-<span class="muted">Cooking time: 5min active / 15-30min passive</span>
+# Установка необхідних програм для Rails Girls
 
-To build apps and other things with Ruby on Rails, we need to setup some software and the developer environment for your computer.
+Для створення додатків на Ruby On Rails необхідно встановити деякі програми на твій комп'ютер.
 
-Follow the instructions for your operating system. If you run into any problems, don&#8217;t panic. Inform us at the event and we can solve it together.
+Обери інструкцію, що підходить для твоєї операційної системи. Не панікуй, якщо виникнуть якісь проблеми: повідом нам, і ми вирішимо їх разом.
 
 * [Setup for OS X](#setup-for-os-x)
 * [Setup for Windows](#setup-for-windows)
@@ -21,34 +20,37 @@ Follow the instructions for your operating system. If you run into any problems,
 
 ## Setup for OS X
 
-### *1.* Let&#8217;s check the version of the operating system.
+### *1.* Спочатку перевіримо версію твоєї операційної ситеми.
 
-Click the Apple menu and choose *About this Mac*.
+Натисни на меню та вибери *About this Mac*.
 
 ![Apple menu](/images/1.png "Apple menu")
 
-### *2.* In the window you will find the version of your operating system.
-If your version number starts with 10.6, 10.7, 10.8, 10.9, 10.10, 10.11 or higher this guide is for you. If it&#8217;s something else, we can setup your machine at the event.
+
+### *2.* У вікні ти побачиш інформацію про версію твоєї ОС.
+Якщо номер версії починається з 10.6, 10.7, 10.8, 10.9, 10.10, 10.11 чи вище, то ця інструкція для тебе. Якщо це інша версія, ти можеш налаштувати машину під час події чи скористатись хмарним варіантом.
+
 
 ![About this Mac dialog](/images/2.png "About this Mac dialog")
 
-### *3a.* If your OS X version is 10.9 or higher:
+### *3a.* Для версії OS X 10.9 та вище:
 
-If your version number starts with 10.9, 10.10, 10.11 or higher, follow these steps. We are installing homebrew and rbenv.
+Якщо у тебе версія 10.9, 10.10, 10.11 чи вище,то тобі необхідно установити homebrew та rbenv
 
-#### *3a1.* Install Command line tools on terminal:
+#### *3a1.* Установи Command line tools:
 
 {% highlight sh %}
 xcode-select --install
 {% endhighlight %}
 
-#### *3a2.* Install [Homebrew](http://brew.sh/):
+#### *3a2.* Установи [Homebrew](http://brew.sh/):
 
 {% highlight sh %}
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 {% endhighlight %}
 
-#### *3a3.* Install [rbenv](https://github.com/rbenv/rbenv):
+#### *3a3.* Установи [rbenv](https://github.com/rbenv/rbenv):
+
 
 {% highlight sh %}
 brew update
@@ -66,15 +68,16 @@ echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
 source ~/.bash_profile
 {% endhighlight %}
 
-#### *3a4.* Build Ruby with rbenv:
+#### *3a4.* Установи Ruby із rbenv:
 
-You can find the newest version of Ruby with the command "rbenv install -l".
+Найновішу версію ruby ти можеш знайти за допомогою команди "rbenv install -l".
 
 {% highlight sh %}
-rbenv install 2.4.2
+rbenv install 2.5.3
 {% endhighlight %}
 
-If you got "OpenSSL::SSL::SSLError: ... : certificate verify failed" error, try it this way.
+Якщо у тебе з'явилась помилка
+"OpenSSL::SSL::SSLError: ... : certificate verify failed" спробуй:
 
 {% highlight sh %}
 brew install curl-ca-bundle
@@ -84,45 +87,51 @@ brew install curl-ca-bundle
 cp /usr/local/opt/curl-ca-bundle/share/ca-bundle.crt `ruby -ropenssl -e 'puts OpenSSL::X509::DEFAULT_CERT_FILE'`
 {% endhighlight %}
 
-#### *3a5.* Set default Ruby:
+#### *3a5.* Установка Ruby за замовчуванням
 
 {% highlight sh %}
-rbenv global 2.4.2
+rbenv global 2.5.3
 {% endhighlight %}
 
-#### *3a6.* Install rails:
+#### *3a6.* Встановлюємо rails:
 
 {% highlight sh %}
 gem install rails --no-document
 {% endhighlight %}
 
-### *3b.* If your OS X version is 10.6, 10.7, or 10.8:
-Download the RailsInstaller for your version of OS X:
+### *3b.* Якщо у тебе OS X версії 10.6, 10.7, or 10.8:
+Завантаж RailsInstaller для своєї версії OS X:
 
 * [RailsInstaller for 10.7 and 10.8](http://railsinstaller.s3.amazonaws.com/RailsInstaller-1.0.4-osx-10.7.app.tgz) <span class="muted">(325MB)</span>
 * [RailsInstaller for 10.6](http://railsinstaller.s3.amazonaws.com/RailsInstaller-1.0.4-osx-10.6.app.tgz) <span class="muted">(224MB)</span>
 
-Double click the downloaded file and it will unpack it into the current directory. Double click the the newly unpacked 'RailsInstaller-1.0.4-osx-10.7.app' or 'RailsInstaller-1.0.4-osx-10.6.app' and follow the instructions. It will open a README file with 'Rails Installer OS X' at the top. Please **ignore** the instructions in this file.
+Двічі натисни на завантажений файл і він установиться у поточну директорію. Відкрий розархівований файл `RailsInstaller-1.0.4-osx-10.7.app` або `RailsInstaller-1.0.4-osx-10.6.app` і слідуй інструкції установки. Відкриється нове вікно з README файлом з 'Rails Installer OS X'. Будь ласка, **не виконуй** інструкції у цьому файлі.
 
-If the Rails version wasn't the latest, you could update it using a following command on terminal.
+Якщо версія Rails не була найновішою, ти можеш просто оновити її набравши у терміналі:
 
 {% highlight sh %}
-gem update rails --no-document
+gem update rails --no-ri --no-rdoc
 {% endhighlight %}
 
-### *4.* Install a text editor to edit code files
+Для того, щоб переконатись, що все працює запустимо команду сторення додатка
 
-For the workshop we recommend the text editor Atom.
+{% highlight sh %}
+rails new railsgirls
+{% endhighlight %}
 
-* [Download Atom and install it](https://atom.io/)
+### *4.* Встановимо текстовий редактор
 
-If you are using Mac OS X 10.7 or older versions, you can use another editor [Sublime Text 2](http://www.sublimetext.com/2). Just to make sure that you're not mixing up using your terminal or text-editor: change the theme of your Sublime text-editor, choosing one of the following: "iPlastic", "Slush &amp; Poppies", or "Zenburnesque".
+Для воркшопу ми рекомендуємо тестовий редактор Atom.
 
-### *5.* Update your browser
+* [Завантажити Atom та встановити](https://atom.io/)
 
-Open [whatbrowser.org](http://whatbrowser.org) and update your browser if you don't have the latest version.
+Якщо ти використовуєш Mac OS X 10.7 чи старішу версію, ти можеш використати інший текстовий редактор [Sublime Text 2](http://www.sublimetext.com/2).
 
-### *6.* Check the environment
+### *5.* Оновлення веб оглядача
+
+Відкрий [whatbrowser.org](http://whatbrowser.org) та онови свій веб оглядач, якщо у тебе не остання версія.
+
+### *6.* Перевірка середовища
 
 Check that everything is working by running the application generator command.
 
@@ -140,7 +149,7 @@ rails server
 
 Go to `http://localhost:3000` in your browser, and you should see the 'Yay! You're on Rails!' page.
 
-Now you should have a working Ruby on Rails programming setup. Congrats!
+Це все! Тепер у тебе все необхідне для створення свого першого додатку на Ruby on Rails ;)
 
 **Coach:** We recommend to verify by using the scaffold command and inputting data with the generated page with coaches to ensure everything is working. Also: remove the test app `myapp` to make super sure no-one is working in the wrong folder, following the steps of the workshop.
 
@@ -148,7 +157,7 @@ Now you should have a working Ruby on Rails programming setup. Congrats!
 
 ## Setup for Windows
 
-### *1.* Install Rails
+### *1.* Встановлюємо Rails
 
 Download [RailsInstaller](https://s3.amazonaws.com/railsinstaller/Windows/railsinstaller-3.3.0.exe) and run it. Click through the installer using the default options.
 
@@ -170,7 +179,8 @@ To paste a text in the command prompt window you'll need to use the mouse (right
 
 #### *1b.* Install Rails
 
-In the `Command Prompt with Ruby and Rails`, run the following command:
+
+Відкрий `Command Prompt with Ruby on Rails` і набери:
 
 {% highlight sh %}
 rails -v
@@ -207,24 +217,25 @@ If the Rails version is less than 5.1, update it using a following command:
 gem update rails --no-document
 {% endhighlight %}
 
-## Possible errors
+## Можливі помилки
 
 ### Gem::RemoteFetcher error
 
-If you get this error when running `rails new railsgirls` or `gem update rails`:
+Якщо при запуску `rails new railsgirls` чи `gem update rails` виникає ця помилка:
 
 {% highlight sh %}
 Gem::RemoteFetcher::FetchError: SSL_connect returned=1 errno=0 state=SSLv3 read
 server certificate B: certificate verify failed (https://rubygems.org/gems/i18n-0.6.11.gem)
 {% endhighlight %}
 
-This means you have an older version of Rubygems and will need to update it manually first verify your Rubygems version
+Це означає, що у тебе старіша версія Rubygems і необхідно вручну оновити її вказуючи версію Rubygems
 
 {% highlight sh %}
 gem -v
 {% endhighlight %}
 
-If it is lower than `2.6.5` you will need to manually update it:
+
+Якщо версія нижча ніж `2.6.5` необхідно оновити її вручну:
 
 First download the [ruby-gems-update gem](https://rubygems.org/gems/rubygems-update-2.6.11.gem). Move the file to `c:\\rubygems-update-2.6.11.gem` then run:
 
@@ -236,11 +247,7 @@ gem install --local c:\\rubygems-update-2.6.11.gem
 update_rubygems --no-document
 {% endhighlight %}
 
-{% highlight sh %}
-gem uninstall rubygems-update -x
-{% endhighlight %}
-
-Check your version of rubygems
+Перевіримо версію rubygems
 
 {% highlight sh %}
 gem -v
@@ -258,31 +265,33 @@ The error will make mention of [bit.ly/ruby-ssl](http://bit.ly/ruby-ssl). What i
 
 ### 'x64_mingw' is not a valid platform` Error
 
-Sometimes you get the following error when running `rails server`:
-`'x64_mingw' is not a valid platform` If you experience this error after using the RailsInstaller you have to do a small edit to the file `Gemfile`:
+Інколи при запуску `rails server` виникає помилка:
+`'x64_mingw' is not a valid platform`
 
-Look at the bottom of the file. You will probably see something like this as one of the last lines in the file:
-`gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]`. If you have this line with `:x64_mingw`, then please delete the `:x64_mingw` part. In the end it should just say:
+Тоді необхідно трохи відредагувати `Gemfile`:
+
+Подивись в кінець файлу. Ти побачиш схожі рядки:
+`gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]`. Якщо у тебе є рядок з `:x64_mingw`,тоді видали `:x64_mingw`  Вкінці повиннен бути лише рядок:
 `'tzinfo-data', platforms: [:mingw, :mswin]`
 
-After you did that, please use your Command Prompt again and type `bundle update`.
+Після змін введи в командному рядку `bundle update`.
 
-### *2.* Install a text editor to edit code files
+### *2.* Встановлюємо текстовий редактор
 
-For the workshop we recommend the text editor Atom.
+Для цього воркшопу ми рекомендуємо текстовий редактор Atom.
 
 * [Download Atom and install it](https://github.com/atom/atom/releases/latest)
-  * Download an atom zip file for windows and decompress it.
-  * Copy the folder into your Program Files.
-  * Launch atom in the folder.
+  * Завантажимо архів atom zip для windows та розархівуємо його.
+  * Скопіюємо директорію у Program Files.
+  * Запускаємо atom у директорії
 
-If you are using Windows Vista or older versions, you can use another editor [Sublime Text 2](http://www.sublimetext.com/2). Just to make sure that you're not mixing up using your command prompt or text-editor: change the theme of your Sublime text-editor, choosing one of the following: "iPlastic", "Slush &amp; Poppies", or "Zenburnesque".
+Якщо ви використовуєте Windows Vista чи старіші версії, ви можете використати інший редактор [Sublime Text 2](http://www.sublimetext.com/2).
 
-### *3.* Update your browser
+### *3.* Оновлення веб оглядача
 
-If you use Internet Explorer, we recommend installing [Firefox](mozilla.org/firefox) or [Google Chrome](google.com/chrome).
+Якщо ти використовуєш Internet Explorer, ми рекомендуємо установити [Firefox](mozilla.org/firefox) або [Google Chrome](google.com/chrome).
 
-Open [whatbrowser.org](http://whatbrowser.org) and update your browser if you don't have the latest version.
+Відкрий [whatbrowser.org](http://whatbrowser.org) та онови свій браузер, якщо у тебе не остання версія.
 
 ### *4.* Install Node.js
 
@@ -323,12 +332,12 @@ Now you should have a working Ruby on Rails programming setup. Congrats!
 
 ## Setup for Linux
 
-### *1.* Install Rails
+### *1.* Установка Rails
 
 
-To install the Ruby on Rails development environment you just need to copy the line below for your Linux distribution (Ubuntu or Fedora), paste it in the Terminal and press Enter. Enjoy the text flying on the screen; it will take quite some time. Grabbing a refreshing drink before starting is encouraged.
+Для того, щоб установити Ruby on Rails необхідно просто скопіювати команду для твого дистрибутива Linux (Ubuntu чи Fedora), вставити команду у термінал та, набравшись терпіння, спостерігати, як пролітають команди на моніторі.
 
-#### For Ubuntu:
+#### Для Ubuntu:
 
 {% highlight sh %}
 sudo apt-get install curl
@@ -338,7 +347,7 @@ sudo apt-get install curl
 bash < <(curl -sL https://raw.github.com/railsgirls/installation-scripts/master/rails-install-ubuntu.sh)
 {% endhighlight %}
 
-If you are going to use RVM installations with gnome-terminal, you'll probably need to change it's default options before you can see and use the right Ruby and Rails versions. Find out how: [RVM documentation](http://rvm.io/integration/gnome-terminal).
+Якщо ти будеш використовувати RVM установку з gnome-terminal, то тут ти можеш знайти додаткову інформацію: [RVM documentation](http://rvm.io/integration/gnome-terminal).
 
 #### For Fedora:
 
@@ -346,23 +355,23 @@ If you are going to use RVM installations with gnome-terminal, you'll probably n
 bash < <(curl -sL https://raw.github.com/railsgirls/installation-scripts/master/rails-install-fedora.sh)
 {% endhighlight %}
 
-Make sure that all works well by running the application generator command.
+Для того, щоб переконатись, що все працює запустимо команду сторення додатка
 
 {% highlight sh %}
 rails new myapp
 {% endhighlight %}
 
 
-### *2.* Install a text editor to edit code files
+### *2.* Встановлення текстового редактора
 
-For the workshop we recommend the text editor Sublime Text.
+Для воркшопу ми рекомендуємо текстовий редактор Sublime Text.
 
-* [Download Sublime Text and install it](http://www.sublimetext.com/2). Just to make sure that you're not mixing up using your terminal or text-editor: change the theme of your Sublime text-editor, choosing one of the following: "iPlastic", "Slush &amp; Poppies", or "Zenburnesque".
+* [Завантажити і встановити Sublime Text](http://www.sublimetext.com/2)
 
 
-### *3.* Update your browser
+### *3.* Оновлення браузера
 
-Open [whatbrowser.org](http://whatbrowser.org) and update your browser if you don't have the latest version.
+Відкрий [whatbrowser.org](http://whatbrowser.org) та онови свій браузер, якщо у тебе не остання версія.
 
 ### *4.* Check the environment
 
@@ -382,7 +391,7 @@ rails server
 
 Go to `http://localhost:3000` in your browser, and you should see the 'Yay! You're on Rails!' page.
 
-Now you should have a working Ruby on Rails programming setup. Congrats!
+Це все! Тепер у тебе все необхідне для створення свого першого додатку на Ruby on Rails ;)
 
 **Coach:** We recommend to verify by using the scaffold command and inputting data with the generated page with coaches to ensure everything is working. Also: remove the test app `myapp` to make super sure no-one is working in the wrong folder, following the steps of the workshop.
 
@@ -390,11 +399,12 @@ Now you should have a working Ruby on Rails programming setup. Congrats!
 
 ## Virtual Machine
 
-Instead of installing all tools on your machine, you can also set up a development environment in a Virtual Machine. Please find all the details [here]({% post_url 2014-03-24-alternative-dev-environment %}).
+Замість установки всіх програм на свій ноутбук ти можеш встановити середовище програмування на віртуальній машині. Тут детальніше про налаштування віртуального середовища: [Virtual machine]({% post_url 2014-03-24-alternative-dev-environment %}).
 
 <hr />
 
 ## Using a Cloud Service
+
 
 Instead of installing Ruby on Rails and an editor on your computer, you can use a webservice for development. All you need is a browser and an internet connection. This guide explains how to get started with [codenvy.io](https://codenvy.io). If you're using a different service, they may use a different wording, but the process is usually pretty similar.
 
