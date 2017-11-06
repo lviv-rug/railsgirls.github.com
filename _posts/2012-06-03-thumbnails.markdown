@@ -1,63 +1,61 @@
 ---
 layout: default
-title: Show thumbnails when listing ideas
+title: Мініатюри для списку ідей
 permalink: thumbnails
 ---
 
-# Create thumbnails with Carrierwave
+# Створення мініатюр із Carrierwave
 
 *Created by Miha Filej, [@mfilej](https://twitter.com/mfilej)*
 
-__Coach__: Explain what specifying the image width in HTML at the end of Step
-4 does and how it differs from resizing images on the server.
+__Наставник__: Поясни, що робить визначення ширини картинки в HTML в кінці 4 пункту,
+і чим воно відрізняється від зміни розміру картинок на сервері.
 
-## *1.* Installing ImageMagick
+## *1.* Інсталяція ImageMagick
 
-* OS X: run `brew install imagemagick`. If you don't have the brew command, you can [install Homebrew here][in-homebrew].
-* Windows: download and run the [ImageMagick installer][im-win] (use the first
-  *download* link). In the installation wizard, make sure you check the checkbox
-  to install legacy binaries.
-* Linux: On Ubuntu and Debian, run `sudo apt-get install imagemagick`. Use the
-  appropriate package manager instead of `apt-get` for other distributions.
+* OS X: виконай команду `brew install imagemagick`. Якщо у тебе немає команди `brew`, можеш [встановити Homebrew тут][in-homebrew].
+* Windows: завантаж і запусти [ImageMagick інсталятор][im-win] (використай перший лінк для завантаження).
+У майстрі інсталяції, вибери пункт legacy binaries.
+* Linux: На Ubuntu і Debian, виконай `sudo apt-get install imagemagick`.
+Для інших дистрибутивів, замість `apt-get`, використовуй відповідний менеджер пакетів.
 
   [im-win]: http://www.imagemagick.org/script/download.php#windows
   [in-homebrew]: https://brew.sh/
 
-__Coach__: What is ImageMagick and how is it different from libraries/gems we
-used before?
+__Наставник__: Що таке ImageMagick і як він відрізняється від бібліотек/гемів, котрі ми використовували раніше?
 
-Open `Gemfile` in the project and add
+Відкрий `Gemfile` в проекті і додай
 
 {% highlight ruby %}
 gem 'mini_magick', '4.8.0'
 {% endhighlight %}
 
-under the line
+під стрічкою
 
 {% highlight ruby %}
 gem 'carrierwave'
 {% endhighlight %}
 
-In the Terminal run:
+У терміналі виконай:
 
 {% highlight sh %}
 bundle
 {% endhighlight %}
 
-## *2.* Telling our app to create thumbnails when an image is uploaded
 
-Open `app/uploaders/picture_uploader.rb` and find the line that looks like
-this:
+## *2.* Скажемо нашій аплікації, щоб створювала мініатюри, коли ми завантажуємо зображення
+
+Відкрий `app/uploaders/picture_uploader.rb` і знайди таку стрічку:
 
 {% highlight ruby %}
   # include CarrierWave::MiniMagick
 {% endhighlight %}
 
-Remove the `#` sign.
+Видали цей `#` знак.
 
-__Coach__: Explain the concept of comments in code.
+__Наставник__: Поясни ідею коментарів у коді.
 
-Below the line you just changed, add:
+Під стрічкою, яку щойно змінили, додай:
 
 {% highlight ruby %}
 version :thumb do
@@ -65,23 +63,23 @@ version :thumb do
 end
 {% endhighlight %}
 
-The images uploaded from now on should be resized, but the ones we already
-have weren't affected. So edit one of the existing ideas and re-add a picture.
+Відтепер завантажені зображення змінюватимуть свій розмір, але ті, які ми уже маємо,
+не зазнають змін.
+Тож відредагуй якусь ідею, ще раз додавши зображення.
 
-## *3.* Displaying the thumbnails
+## *3.* Відображення мініатюр
 
-To see if the uploaded picture was resized open
-`app/views/ideas/index.html.erb`. Change the line
+Щоб перевірити, чи завантажене зображення змінило свій розмір, відкрий
+`app/views/ideas/index.html.erb`. Заміни стрічку
 
 {% highlight erb %}
 <%= image_tag idea.picture_url, width: '100%' if idea.picture.present? %>
 {% endhighlight %}
 
-to
+на
 
 {% highlight erb %}
 <%= image_tag idea.picture_url(:thumb) if idea.picture.present? %>
 {% endhighlight %}
 
-Take a look at the list of ideas in the browser to see if the thumbnail is
-there.
+Подивися на список ідей у браузері, щоб побачити чи є там мініатюри.
