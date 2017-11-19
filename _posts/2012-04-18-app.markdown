@@ -75,7 +75,10 @@ Need some reminders along the way? Check out this [handy cheatsheet for Ruby, Ra
     {% endhighlight %}
 
     <div>
-      <p>Можна переконатись переконатись, що директорія із назвою <code>projects</code> була створена, виконавши команду: <code>ls</code>. Ти повинна побачити директорію <code>projects</code> у отриманому списку. Тепер потрібно змінити поточну директорію на <code>projects</code>, виконавши:</p>
+      <p>
+        Можна переконатись переконатись, що директорія із назвою <code>projects</code> була створена, виконавши команду: <code>ls</code>. Можна побачити директорію <code>projects</code> у отриманому списку. Тепер потрібно змінити поточну директорію на <code>projects</code>, виконавши:
+      </p>
+
     </div>
 
     {% highlight sh %}
@@ -105,6 +108,7 @@ Need some reminders along the way? Check out this [handy cheatsheet for Ruby, Ra
     {% highlight sh %}
     rails server
     {% endhighlight %}
+
   </div>
 
   <div class="win">
