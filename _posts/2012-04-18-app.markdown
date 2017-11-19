@@ -1,10 +1,9 @@
 ---
 layout: default
-title: Rails Girls App Tutorial
+title: Rails Teens App Tutorial
 permalink: app
 ---
-
-# Rails Girls App Tutorial
+# Rails Teens App Tutorial
 
 *Created by Vesa Vänskä, [@vesan](https://twitter.com/vesan)*
 
@@ -40,7 +39,7 @@ permalink: app
 Під час проходження інструкцій ви будете бачити частинки коду, відформатовані як:
 
 {% highlight sh %}
-some code
+Привіт, Світ!
 {% endhighlight %}
 
 <div>
