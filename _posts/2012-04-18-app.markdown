@@ -156,6 +156,7 @@ Need some reminders along the way? Check out this [handy cheatsheet for Ruby, Ra
 
 Зверни увагу, у цьому вікні командний рядок недоступний, тому що ти запустила сервер Rails. Командний рядок виглядає наступним чином:
 
+
 <div class="os-specific">
   <div class="nix">
     {% highlight sh %}
@@ -169,10 +170,8 @@ Need some reminders along the way? Check out this [handy cheatsheet for Ruby, Ra
   </div>
 </div>
 
-# TODO: translate
-**Tip:** Sometimes, both in this guide and other guides online, you will see commands written with the `$` symbol at the start. This is a convention that signifies the beginning of a line that needs to be entered into your Terminal / Command Prompt.
-You do not need to type this symbol at the start of your commands. Your particular prompt may not have a `$` symbol at the start of it.
-
+**Tip:** Інколи у різних інструкціях ти можеш побачити команди, що написані з символом `$` напочатку. Це домовленість, що означає початок лінії, яку треба ввести у термінал.
+Тобі не потрібно вводити цей символ на спочатку команди. Твій командний рядок може не мати символу `$` на початку.
 
 Коли командний рядок недоступний, ви не можете виконувати нові команди. Якщо ви спробуєте виконати `cd` чи будь-яку іншу команду, вона не спрацює. Щоб повернутися у звичний режим:
 
