@@ -6,7 +6,7 @@ permalink: design-html-css
 
 ## *1.* Дизайн заголовка
 
-Добавить строки в конец файла `app/assets/stylesheets/application.css`:
+Додайте рядки в кінець файлу `app/assets/stylesheets/application.css`:
 
 {% highlight css %}
 .navbar {
@@ -16,9 +16,9 @@ permalink: design-html-css
 {% endhighlight %}
 
 
-Обновите страницу и проверьте изменения. Вы можете изменить цвет и шрифт заголовка по своему вкусу. Ссылка на коды цвета [http://color.uisdc.com/](http://color.uisdc.com/).
+Оновiть сторінку і перевірте зміни. Ви можете змінити колір і шрифт заголовка на свій смак. Посилання на коди кольору [http://color.uisdc.com/](http://color.uisdc.com/).
 
-После этого, поместите эти строки внизу файла:
+Після цього, помістіть ці рядки внизу файлу:
 
 {% highlight css %}
 .navbar a.brand { font-size: 18px; }
@@ -30,12 +30,12 @@ permalink: design-html-css
 {% endhighlight %}
 
 
-**Тренер:** объясните про 4-е состояния ссылки
+**Тренер:** поясніть про 4-и стани посилання
 
 
-## *2.* Дизайн таблицы
+## *2.*Дизайн таблиці
 
-Мы используем twitter [Bootstrap](http://getbootstrap.com/) для дизайна нашей таблицы. Найдите эти строки в файле `app/views/ideas/index.html.erb` и замените:
+Ми використовуємо twitter [Bootstrap](http://getbootstrap.com/) для дизайну нашої таблиці. Знайдіть ці рядки в файлі `app/views/ideas/index.html.erb` і замініть:
 
 {% highlight html %}
 <table>
@@ -45,16 +45,16 @@ permalink: design-html-css
 <table class="table">
 {% endhighlight %}
 
-Измените размер изображения, дополнив код между строк
+Змініть розмір зображення, доповнивши код між рядків
 
 {% highlight erb %}
 <%= image_tag(idea.picture_url, :width => 600) if idea.picture.present? %>
 {% endhighlight %}
 
 
-попробуйте изменить ширину и посмотрите, что произойдет
+спробуйте змінити ширину і подивіться, що станеться
 
-Добавьте строки в конец файла `app/assets/stylesheets/ideas.css.scss`:
+Додайте рядки в кінець файлу `app/assets/stylesheets/ideas.css.scss`:
 
 {% highlight css %}
 .container a:hover {
@@ -65,11 +65,11 @@ permalink: design-html-css
 {% endhighlight %}
 
 
-Попробуйте добавить фоновый стиль используя  `background-image`, ссылка на паттерны [http://subtlepatterns.com/](http://subtlepatterns.com/)
+Спробуйте додати фоновий стиль використовуючи `background-image`, посилання на патерни [http://subtlepatterns.com/](http://subtlepatterns.com/)
 
-## *3.*Добавление стилей для подвала
+## *3.*Додавання стилів для підвалу
 
-Добавьте строки в конец файла `app/assets/stylesheets/application.css`:
+Додайте рядки в кінець файлу `app/assets/stylesheets/application.css`:
 
 {% highlight css %}
 footer {
@@ -78,14 +78,13 @@ footer {
 }
 {% endhighlight %}
 
-попробуйте добавить больше разных стилей в подвал.
+спробуйте додати більше різних стилів до підвалу.
 
+## *4.*Додавання стилів для кнопки
 
-## *4.* Добавление стилей для кнопки
+Відкрийте [http://localhost:3000/ideas/new](http://localhost:3000/ideas/new) і знайдіть кнопку Create Idea.
 
-Откройте [http://localhost:3000/ideas/new](http://localhost:3000/ideas/new) и найдите кнопку Create Idea.
-
-Добавьте строки в конец файла `app/assets/stylesheets/ideas.css.scss`
+Додайте рядки в кінець файлу `app/assets/stylesheets/ideas.css.scss`
 
 
 {% highlight css %}
@@ -99,4 +98,4 @@ footer {
 {% endhighlight %}
 
 
-**Тренер:** объясните, как использовать рамки в css, попробуйте изменить стиль кнопки, например закруглить края, добавить тень или цвет и т.д.
+**Тренер:** поясніть, як використовувати рамки в css, спробуйте змінити стиль кнопки, наприклад закруглити, додати тінь або колір і т.д.
