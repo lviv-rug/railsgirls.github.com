@@ -3,13 +3,12 @@ layout: default
 title: Rails Girls App Tutorial
 permalink: app
 ---
+
 # Rails Girls App Tutorial
 
 *Created by Vesa Vänskä, [@vesan](https://twitter.com/vesan)*
 
-
 **Переконайсь, що у тебе встановлено Rails.** Якщо ж ні, [**скористайся інструкціями для встановлення**](/install).
-
 
 ## Знайомство з інструментами
 
