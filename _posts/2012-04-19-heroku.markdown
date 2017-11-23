@@ -10,6 +10,7 @@ permalink: heroku
 
 ### Встановлення інструментів Heroku та налаштування доступу
 
+<<<<<<< HEAD
 Для початку необхідно встановити [Heroku Toolbelt](https://devcenter.heroku.com/articles/getting-started-with-ruby#set-up) та [зареєструватись](https://signup.heroku.com/dc) на сервісі Heroku.
 Далі у командному рядку слід виконати наступну команду, у відповідь на запрошення ввести ім'я новоствореного користувача та пароль:
 
@@ -24,6 +25,16 @@ heroku login
 #### Система контролю версій (VCS - Version Control System)
 
 Зараз нам потрібно додати проект у систему контролю версій. Для цього слід виконати в командному рядку наступну послідовність команд:
+=======
+Перейди на інструкцію [Getting Started on Heroku with Ruby][heroku-guide] та
+виконай кроки "Introduction", кроки від "Set up"до "Sign up", крок "install the
+Heroku CLI", та "login".
+
+### Підготуємо проект
+
+Ми повинні додати систему контролю версій до твого коду. Ти можеш це зробити, виконавши
+наступні команди у терміналі:
+>>>>>>> heroku transaltion
 
 {% highlight sh %}
 git init
@@ -31,11 +42,20 @@ git add .
 git commit -m "initial commit"
 {% endhighlight %}
 
+<<<<<<< HEAD
 **Наставник:** Зараз є хороша можливсть поговорити про системи контролю версій та, зокрема, git. Також варто пояснити про файл `.gitignore` та його вміст, а також чому не потрібно завантажувати деякі файли в репозиторій.
 
 #### Зміна конфігурації бази даних
 
 Перш за все, нам потрібно, щоб на Heroku працювала база даних. Heroku та твоє локальне середовище використовують зовсім різні бази даних (локально - SQLite; на Heroku - PostgreSQL), тому потрібно внести певні зміни у файл Gemfile. Необхідно замінити цей рядок
+=======
+__Ментор__: Це добрий час, щоб поговорити про систему контролю версій та git.
+
+#### Зміна конфігурації бази даних
+
+Спочатку нам потрібно, аби наша база даних запрацювала на Heroku, який використовує
+базу даних, що відрізняєтся від нашої. Будь ласка, заміни у Gemfile:
+>>>>>>> heroku transaltion
 
 {% highlight ruby %}
 gem 'sqlite3'
@@ -52,8 +72,10 @@ group :production do
 end
 {% endhighlight %}
 
-Далі слід виконати команду `bundle install --without production`, щоб завантажити та встановити необхідні бібліотеки.
+Далі слід виконати команду `bundle install --without production`, щоб завантажити
+та встановити необхідні бібліотеки.
 
+<<<<<<< HEAD
 Не забудьте виконати команди `git add .` та `git commit -m "Use postgres as production database"`
 щоб додати ваші зміни до гілки `master` перед подальшою публікацією на heroku.
 
@@ -89,23 +111,44 @@ git commit -a -m "Added rails_12factor gem and updated Gemfile.lock"
 {% endhighlight %}
 
 **Наставник:** Можна поговорити про логування та інші особливості роботи з Heroku.
+=======
+Не забудь зробити `git add .` та `git commit -m "Use postgres as production database"`
+на master вітці перед пушем на heroku.
+
+__Ментор__: Тут можна поговорити про RDBMS та різницю між ними, плюс додай трохи
+деталей про залежність Heroku від PostgreSQL.
+>>>>>>> heroku transaltion
 
 ### Розгортання проекту
 
-#### Створення нового додатка на Heroku
+#### Створення нового застосунку на Heroku
 
+<<<<<<< HEAD
 Для створення нового Heroku додатка потрібно виконати в терміналі команду `heroku create`. В результаті вийде щось типу цього:
+=======
+Ми повинні створити наш Heroku застосунок набравши `heroku create` у терміналі
+і маємо побачити подібне:
+>>>>>>> heroku transaltion
 
 {% highlight sh %}
 Creating app... done, ⬢ young-reaches-87845
 https://young-reaches-87845.herokuapp.com/ | https://git.heroku.com/young-reaches-87845.git
 {% endhighlight %}
 
+<<<<<<< HEAD
 Тут "young-reaches-87845" - автоматично згенерована назва Heroku додатка. Можна вказати і свою назву, але вона має бути унікальною (скоріше за все, назви "railsgirls" та "helloworld" вже хтось використав до тебе, тому доведеться придумати щось оригінальніше).
 
 #### Публікуємо код
 
 Тепер потрібно завантажити готовий код проекту у репозиторій Heroku (все решта буде зроблено автоматично). Для цього треба виконати в терміналі команду `git push heroku master`; результат буде виглядати приблизно так:
+=======
+У даному випадку "young-reaches-87845" назва твого застосунку.
+
+#### Публікуємо код
+
+Далі, ми повинні запушити наш код на heroku, набравши `git push heroku master`.
+Ти побачиш у терміналі наступне:
+>>>>>>> heroku transaltion
 
 {% highlight sh %}
 Counting objects: 115, done.
@@ -149,50 +192,49 @@ heroku run rake db:migrate
 
 Тепер можна спробувати зайти на адресу програми і подивитись результат у браузері. Адреса (URL) буде виглядати якось так: <https://young-reaches-87845.herokuapp.com/> (звісно, замість ідентифікатора 'sheltered-refuge-6377' буде щось інше). Ще один цікавий спосіб - виконати в терміналі команду `heroku open`, і браузер сам відкриється на потрібній сторінці.
 
-#### Closing notes
+Платформа Heroku не без своїх примх. Проекти, що живуть на Heroku працюють у "ефемерному"
+середовищі - мається на увазі, що (окрім інформації, що зберігається у твоїй базі даних)
+будь-який файл, що буде створений твоїм застосунком зникне при перезавантаженні проекту
+(наприклад при пуші нових змін)
 
-Heroku's platform is not without its quirks. Applications run on Heroku live
-within an ephermeral environment — this means that (except for information
-stored in your database) any files created by your application will disappear
-if it restarts (for example, when you push a new version).
+###### [Ефемерна файлова система][ephemeral-filesystem]
 
-###### [Ephemeral filesystem][ephemeral-filesystem]
+> Коже [dyno (контейнер)](https://www.heroku.com/dynos) отримує свою ефемерну
+> файлову систему, із свіжим кодом, що був
+> недавно задеплоєний. Протягом життя dyno, його процеси можуть використовувати
+> файлову систему як тимчасове сховише, і всі файли, що були записані, є невидимими
+> для інших процесів у інших dyno і кожен файл буде видалений у момент видалення
+> чи перезапуску dyno. Для прикладу, це трапляється кожного разу, коли dyno
+> міняється через деплой застосунку і як правило раз на день як частина нормального
+> управління dyno.
 
-> Each dyno gets its own ephemeral filesystem, with a fresh copy of the most
-> recently deployed code. During the dyno’s lifetime its running processes can
-> use the filesystem as a temporary scratchpad, but no files that are written
-> are visible to processes in any other dyno and any files written will be
-> discarded the moment the dyno is stopped or restarted. For example, this
-> occurs any time a dyno is replaced due to application deployment and
-> approximately once a day as part of normal dyno management.
+У [App](/app) посібнику є можливість прикріпляти файли до Idea записів, в
+результаті чого нові файли записуються у папку твого застосунку `public/uploads`.
+Ефемерна файлова система у Heroku може бути побачена за допомогою наступних кроків:
 
-In the [App](/app) tutorial the ability to attach a file to the Idea record is
-added, which results in new files being written to your applications
-`public/uploads` folder. The ephemeral storage in Heroku can be seen with the
-following steps:
 
-1. Launch the app with `heroku open`
-2. Add a new Idea with an image
-3. Restart the application by running `heroku restart`
-4. Go back to your Idea and reload the page - the image should no longer be visible
+1. Запусти додаток у браузері `heroku open`
+2. Додай нову Idea із зображенням
+3. Перезапусти додаток за допомогою `heroku restart`
+4. Вернись назад до Idea та перезавантаж сторінку - зображення повинне пропасти
 
 [ephemeral-filesystem]: https://devcenter.heroku.com/articles/dynos#ephemeral-filesystem
 
-##### Working around Ephemeral Storage
+##### Як жити із Ефемерною файловою системою?
 
-Obviously this doesn't seem to be useful if you were running a real life
-application, but there are ways to work around this which is commonly used by
-a lot of popular websites.
+Звісно, це виглядає не дуже круто, якщо ти маєш реальний проект, але є шляхи
+для вирішення цієї проблеми, яку використовує багато веб-сайтів.
 
-The most common method is to use an external asset host such as Amazon S3 (Simple
-Storage Service) or Rackspace CloudFiles. These services provide (for a low cost
-- usually less then $0.10 per GB) storage 'in the cloud' (meaning the files
-could potentially be hosted anywhere) which your application can use as persistent storage.
+Найбільш поширений метод - використовувати зовнішнє сховище асетів(файлів) наприклад
+Amazon S3 (Simple Storage Service) чи Rackspace CloudFiles. Ці сервіси
+(за низьку ціну - зазвичай менше $0.10 за GB) це сховища "у хмарі" (мається на увазі,
+що файли потенційно можуть хоститись буть-де), які твій застосунок може використовувати
+для зберігання файлів.
 
-While this functionality is a bit out of scope for this tutorial there are some
-resources available which you can use to find your way:
+Оскільки ця функціоналість трішки виходить за межі даного посібника, є ресурси, де
+ти можеш знайти інформаію, як реалізувати подібне:
 
 * [How to: Make Carrierwave work on Heroku](https://github.com/carrierwaveuploader/carrierwave/wiki/How-to%3A-Make-Carrierwave-work-on-Heroku)
 * [Amazon S3 – The Beginner’s Guide](http://www.hongkiat.com/blog/amazon-s3-the-beginners-guide/)
 
-As always if you require any more information or assistance your coaches will be able to assist.
+Звісно, якщо тобі потрібна допомога чи більше інформації, твої ментори будуть готові допомогти.
