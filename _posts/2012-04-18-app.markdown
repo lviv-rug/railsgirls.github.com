@@ -3,21 +3,16 @@ layout: default
 title: Rails Teens App Tutorial
 permalink: app
 ---
-# Rails Teens App Tutorial
+# Rails Girls App Tutorial
 
 *Created by Vesa Vänskä, [@vesan](https://twitter.com/vesan)*
 
-<<<<<<< HEAD
+
 **Переконайсь, що у тебе встановлено Rails.** Якщо ж ні, [**скористайся інструкціями для встановлення**](/install).
 
 
 ## Знайомство з інструментами
 
-=======
-** Переконайся, що rails встановлено.** Як це зробити, може прочитати [**тут**](/install)
-
-## Засоби
->>>>>>> Add complete translation
 <div class="indent" markdown="1">
 
 <h3><i class="icon-text-editor">&nbsp;</i></h3>
