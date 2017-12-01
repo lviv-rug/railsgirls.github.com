@@ -357,13 +357,13 @@ mount_uploader :picture, PictureUploader
 Відкриємо `app/views/ideas/_form.html.erb` і замінимо
 
 {% highlight erb %}
-<%= form.text_field :picture, id: :idea_picture  %>
+<%= f.text_field :picture, id: :idea_picture  %>
 {% endhighlight %}
 
 на
 
 {% highlight erb %}
-<%= form.file_field :picture, id: :idea_picture %>
+<%= f.file_field :picture, id: :idea_picture %>
 {% endhighlight %}
 
 
@@ -464,3 +464,4 @@ Refresh the page in your browser and click the newly created link to see if it w
 * Guide 13: [Напишіть ваш блоґ із Ruby on Rails](diary-app)
 * Guide 14: [Додайте адміністративну панель до вашого додатку (сторінки для адміністратора)](/backend-with-active-admin)
 * Guide 15: [Проглянути розширені коментарі до додатку](https://github.com/lbain/railsgirls)
+
