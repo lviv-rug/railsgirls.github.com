@@ -367,11 +367,9 @@ rails new myapp
 
 * [Завантажити і встановити Sublime Text](http://www.sublimetext.com/2)
 
-
 ### *3.* Оновлення браузера
 
 Відкрий [whatbrowser.org](http://whatbrowser.org) та онови свій браузер, якщо у тебе не остання версія.
-
 
 ### *4.* Перевірка середовища
 
