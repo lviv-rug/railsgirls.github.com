@@ -4,18 +4,18 @@ title: Додаємо можливість реєстрації користув
 permalink: devise
 ---
 
-# Додаємо можливість реєстрації і аутентифікації користувачів Devise
+# Додаємо реєстрацію і аутентифікацію користувачів за допомогою Devise
 
 *Created by Piotr Steininger, [@polishprince](https://twitter.com/polishprince)*
 
 *Updated by Ernesto Jimenez, [@ernesto_jimenez](https://twitter.com/ernesto_jimenez)*
 
-**Цей крок передбачає, що у вас уже є створений by** [**додаток Ideas**](/app).
+**Цей крок передбачає, що у вас вже створений** [**додаток Ideas**](/app).
 
 
-## *1.*Додаємо devise gem
+## *1.*Додання devise gem
 
-Відкриємо `Gemfile` і додамо ці рядки
+Відкриємо `Gemfile` та додамо ці рядки
 
 {% highlight ruby %}
 gem 'devise'
@@ -26,9 +26,9 @@ bundle install
 {% endhighlight %}
 щоб встановити gem. **Не забудь перезапустити Rails сервер**.
 
-## *2.*Інтеграція Devise
+## *2.*Встановлення Devise
 
-Запустимо у терміналі:
+Запустимо в терміналі:
 
 {% highlight sh %}
 rails g devise:install
@@ -44,7 +44,7 @@ rails g devise:install
 
 перед словом `end`.
 
-Відкриємо `app/views/layouts/application.html.erb` і додамо:
+Відкриємо `app/views/layouts/application.html.erb` та додамо:
 
 {% highlight erb %}
 <% if notice %>
@@ -59,7 +59,7 @@ rails g devise:install
    <%= yield %>
 {% endhighlight %}
 
-Відкриємо `app/views/ideas/show.html.erb` і видаляємо рядок:
+Відкриємо `app/views/ideas/show.html.erb` і видалимо рядок:
 
 {% highlight erb %}
 <p id="notice"><%= notice %></p>
@@ -67,27 +67,27 @@ rails g devise:install
 
 робимо те саме у файлі `app/views/comments/show.html.erb`.
 
-## *4.*Створюємо модель користувача
+## *4.*Створення моделi користувача
 
-Ми використаємо bundled generator script для того, щоб створити модель користувача.
+Використаємо команду Device gem для створення моделi користувача.
 {% highlight sh %}
    rails g devise user
    rails db:migrate
 {% endhighlight %}
 
-**Наставник:** Пояснити що було згенеровано. Що таке поля?
+**Ментор:** Поясни що було згенеровано. Що таке поля?
 
-## *5.*Ствоюємо першого користувача
+## *5.*Створення першого користувача
 
-Тепер коли у нас усе встановлено, ми можемо створити першого користувача. Devise автоматично створює всі маршрути, щоб створити новий аккаунт, ввійти чи вийти з додатку.
+Коли в нас все встановлено, ми можемо створити першого користувача. Devise автоматично створює всі маршрути, щоб створити новий аккаунт, увійти чи вийти з додатку.
 
 Переконаємося, що rails сервер увімкнений, відкрий [http://localhost:3000/users/sign_up](http://localhost:3000/users/sign_up) та створи новий профайл користувача.
 
-## *6.*Додамо посилання для авторизації та реєстрації
+## *6.*Додання посилання для авторизації та реєстрації
 
-Все, що нам залишилось зробити, це додати відповідні посилання або повідомення у верхньому правому кутку про те,що користувач увійшов у свій профайл.
+Все, що нам залишилось зробити, це додати відповідні посилання або повідомлення у верхньому правому кутку про те, що користувач увійшов в свій профайл.
 
-Змінимо файл `app/views/layouts/application.html.erb` додаємо:
+В файл `app/views/layouts/application.html.erb` додаємо:
 {% highlight erb %}
 <p class="navbar-text pull-right">
 <% if user_signed_in? %>
@@ -100,14 +100,14 @@ rails g devise:install
 <% end %>
 </p>
 {% endhighlight %}
-прямо над рядками
+над рядками
 {% highlight erb %}
 <ul class="nav">
   <li class="active"><a href="/ideas">Ideas</a></li>
 </ul>
 {% endhighlight %}
 
-Також потрібно, щоб користувач переходив на сторінку авторизації, якщо він ще не увійшов у свій профайл. Для цього відкриваємо  `app/controllers/application_controller.rb` і додаємо:
+Також потрібно, щоб користувач переходив на сторінку авторизації автоматично, якщо він ще не увійшов у свій профайл. Для цього відкриваємо `app/controllers/application_controller.rb` та додаємо:
 
 {% highlight ruby %}
   before_action :authenticate_user!
@@ -115,9 +115,9 @@ rails g devise:install
 
 після `protect_from_forgery with: :exception`.
 
-Відкрий браузер та спробуй увійти і вийти із профайлу.
+Відкрий браузер та спробуй увійти та вийти з профайлу.
 
-**Наставник:** Розкажіть про `user_signed_in?` та `current_user`. Чим вони корисні?
+**Ментор:** Розкажіть про `user_signed_in?` та `current_user`. Чим вони корисні?
 
 ## Що далі?
 
@@ -125,5 +125,3 @@ rails g devise:install
 * Додамо зв'язки між користувачами та ідеями
 * Встановимо обмеження для користувачів
 * Розширимо функціонал із використанням ролей і рівнів доступу (можна використати популярні бібліотеки на кшталт CanCanCan, Rolify, тощо)
-
-
