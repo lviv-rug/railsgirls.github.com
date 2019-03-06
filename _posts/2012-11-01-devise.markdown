@@ -4,7 +4,7 @@ title: Додаємо можливість реєстрації користув
 permalink: devise
 ---
 
-# Додаємо реєстрацію і аутентифікацію користувачів за допомогою Devise
+# Додаємо реєстрацію та аутентифікацію користувачів за допомогою Devise
 
 *Created by Piotr Steininger, [@polishprince](https://twitter.com/polishprince)*
 
