@@ -8,7 +8,7 @@ permalink: install
 
 *Переклад українською - Denys Kurets, [@denys281](https://github.com/denys281)*
 
-*Редагування та оновлення -  Aleksandra Klochko, [@aleksacastle](https://github.com/aleksacastle)*
+*Редагування та оновлення -  Aleksandra Klochko, [@aleksacastle](https://github.com/aleksacastle) та Sofiia Kolisnyk*
 
 Для створення додатків на Ruby On Rails необхідно встановити деякі програми на твій комп'ютер.
 

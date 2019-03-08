@@ -6,8 +6,8 @@ permalink: design-html-css
 
 # Дизайн з Bootstrap
 *Переклад українською - Anastasia, [@mrsOwl](https://github.com/mrsOwl)*
-
-*Редагування та оновлення -  Aleksandra Klochko, [@aleksacastle](https://github.com/aleksacastle)*
+*Переклад українською - Bogdan Varshchuk, [@g3d](https://github.com/g3d)*
+*Редагування та оновлення -  Aleksandra Klochko, [@aleksacastle](https://github.com/aleksacastle) та Sofiia Kolisnyk*
 
 ## *1.*Дизайн заголовку
 

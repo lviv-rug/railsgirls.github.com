@@ -10,6 +10,7 @@ permalink: devise
 
 *Updated by Ernesto Jimenez, [@ernesto_jimenez](https://twitter.com/ernesto_jimenez)*
 
+*Переклад українською - Bogdan Varshchuk, [@g3d](https://github.com/g3d)*
 
 *Редагування та оновлення -  Aleksandra Klochko, [@aleksacastle](https://github.com/aleksacastle)*
 

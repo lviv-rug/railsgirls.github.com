@@ -8,6 +8,8 @@ permalink: gravatar
 
 *Created by Catherine Jones*
 
+*Переклад українською - Bogdan Varshchuk, [@g3d](https://github.com/g3d)*
+
 *Редагування та оновлення -  Aleksandra Klochko, [@aleksacastle](https://github.com/aleksacastle)*
 
 Ця iнструкцiя передбачає, що у вас вже [створений додаток Ideas](http://guides.railsgirls.com/app/) та додана аутентифікація користувачів через [Devise](http://guides.railsgirls.com/devise/).

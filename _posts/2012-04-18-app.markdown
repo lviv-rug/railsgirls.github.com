@@ -9,7 +9,8 @@ permalink: app
 *Created by Vesa Vänskä, [@vesan](https://twitter.com/vesan)*
 
 *Переклад українською - Volodymyr Yevtushenko, [@voloyev](https://github.com/voloyev) та Denys Kurets, [@denys281](https://github.com/denys281)*
-*Редагування та оновлення -  Aleksandra Klochko, [@aleksacastle](https://github.com/aleksacastle)*
+
+*Редагування та оновлення -  Aleksandra Klochko, [@aleksacastle](https://github.com/aleksacastle) та Sofiia Kolisnyk*
 
 **Переконайся, що Rails встановлено.** Як це зробити, може прочитати [**тут**](/install)
 

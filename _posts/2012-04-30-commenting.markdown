@@ -5,6 +5,9 @@ permalink: commenting
 ---
 # Додавання коментарів до Rails Girls додатку
 *Created by Janika Liiv, [@janikaliiv](https://twitter.com/janikaliiv)*
+
+*Переклад українською - Bogdan Varshchuk, [@g3d](https://github.com/g3d)*
+
 *Редагування та оновлення -  Aleksandra Klochko, [@aleksacastle](https://github.com/aleksacastle)*
 
 Зараз ми реалізуємо можливість додавання *коментарів* до *ідей* в твоєму першому Rails додатку.
