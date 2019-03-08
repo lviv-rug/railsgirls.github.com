@@ -8,11 +8,15 @@ permalink: gravatar
 
 *Created by Catherine Jones*
 
-Цей туторіал передбачає, що у вас уже [створений додаток Ideas](http://guides.railsgirls.com/app/) та додана аутентифікація користувачів із [Devise](http://guides.railsgirls.com/devise/).
+*Переклад українською - Bogdan Varshchuk, [@g3d](https://github.com/g3d)*
+
+*Редагування та оновлення -  Aleksandra Klochko, [@aleksacastle](https://github.com/aleksacastle)*
+
+Ця iнструкцiя передбачає, що у вас вже [створений додаток Ideas](http://guides.railsgirls.com/app/) та додана аутентифікація користувачів через [Devise](http://guides.railsgirls.com/devise/).
 
 ### Важливо!
 
-Необхідно мати e-mail адресу зареєстровану на Gravatar. Якщо у вас немає її перейдіть на [gravatar.com](http://en.gravatar.com/) і зареєструйтеся.
+Необхідно бути зареєстрованим на Gravatar та мати доступ до мейлу, який використовувався при реєстрації. Якщо у вас немає аккаунту - перейдіть на [gravatar.com](http://en.gravatar.com/) та зареєструйтеся.
 
 ## *1.* Додамо Gravtastic gem
 
@@ -30,26 +34,26 @@ bundle install
 
 Ми встановили gravtastic gem. Не забудь перезапустити rails сервер.
 
-## *2.* Установка Gravatar
+## *2.* Встановлення Gravatar
 
-Відкриваємо `app/models/user.rb`, і додаємо
+Відкриваємо `app/models/user.rb`, та додаємо
 
 {% highlight ruby %}
 include Gravtastic
 gravtastic
 {% endhighlight %}
 
-одразу ж після першого рядка.
+одразу ж після першого рядку.
 
 ## *3.* Налаштування Gravatar
 
-Відкриємо `app/views/layouts/application.html.erb` і у
+Відкриємо `app/views/layouts/application.html.erb` та в секції
 
 {% highlight erb %}
 <% if user_signed_in? %>
 {% endhighlight %}
 
-секції, але перед
+але перед
 
 {% highlight erb %}
 <% else %>
@@ -61,4 +65,4 @@ gravtastic
 <%= image_tag current_user.gravatar_url %>
 {% endhighlight %}
 
-Тепер відкрий у браузері додаток і ввійди у свій профайл використовуючи той e-mail, який пов'язаний із Gravatar. Ти маєш побачити свій Gravatar.
+Тепер відкрий у браузері додаток та увійди в свій профайл використовуючи той мейл, який пов'язаний із Gravatar. Ти побачиш свій Gravatar.

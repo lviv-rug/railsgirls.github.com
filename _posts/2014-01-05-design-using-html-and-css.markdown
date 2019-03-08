@@ -4,7 +4,12 @@ title: Add design to your App with HTML and CSS
 permalink: design-html-css
 ---
 
-## *1.*Дизайн заголовка
+# Дизайн з Bootstrap
+*Переклад українською - Anastasia, [@mrsOwl](https://github.com/mrsOwl)*
+*Переклад українською - Bogdan Varshchuk, [@g3d](https://github.com/g3d)*
+*Редагування та оновлення -  Aleksandra Klochko, [@aleksacastle](https://github.com/aleksacastle) та Sofiia Kolisnyk*
+
+## *1.*Дизайн заголовку
 
 Додайте рядки в кінець файлу `app/assets/stylesheets/application.css`:
 
@@ -16,9 +21,9 @@ permalink: design-html-css
 {% endhighlight %}
 
 
-Оновiть сторінку і перевірте зміни. Ви можете змінити колір і шрифт заголовка на свій смак. Посилання на коди кольору [http://color.uisdc.com/](http://color.uisdc.com/).
+Оновiть сторінку та перевірте зміни. Ви можете змінити колір і шрифт заголовка на свій смак. Посилання на коди кольору [http://color.uisdc.com/](http://color.uisdc.com/).
 
-Після цього, помістіть ці рядки внизу файлу:
+Після цього, помістіть наступні рядки внизу файлу:
 
 {% highlight css %}
 .navbar a.brand { font-size: 18px; }
@@ -30,28 +35,28 @@ permalink: design-html-css
 {% endhighlight %}
 
 
-**Тренер:** поясніть про 4-и стани посилання
+**Ментор:** Розкажи про чотири стани посилання
 
 ## *2.*Дизайн таблиці
 
-Ми використовуємо twitter [Bootstrap](http://getbootstrap.com/) для дизайну нашої таблиці. Знайдіть ці рядки в файлі `app/views/ideas/index.html.erb` і замініть:
+Ми використовуємо twitter [Bootstrap](http://getbootstrap.com/) для дизайну нашої таблиці. Знайдіть ці рядки в файлі `app/views/ideas/index.html.erb`
 
 {% highlight html %}
 <table>
 {% endhighlight %}
-с
+та замініть на
 {% highlight html %}
 <table class="table">
 {% endhighlight %}
 
-Змініть розмір зображення, доповнивши код між рядків
+Змініть розмір зображення, додавши код між рядків
 
 {% highlight erb %}
 <%= image_tag(idea.picture_url, :width => 600) if idea.picture.present? %>
 {% endhighlight %}
 
 
-спробуйте змінити ширину і подивіться, що станеться
+спробуйте змінити значення :width.
 
 Додайте рядки в кінець файлу `app/assets/stylesheets/ideas.css.scss`:
 
@@ -64,9 +69,9 @@ permalink: design-html-css
 {% endhighlight %}
 
 
-Спробуйте додати фоновий стиль використовуючи `background-image`, посилання на патерни [http://subtlepatterns.com/](http://subtlepatterns.com/)
+Спробуйте додати фоновий стиль, використовуючи `background-image`, посилання на патерни [http://subtlepatterns.com/](http://subtlepatterns.com/).
 
-## *3.*Додавання стилів для підвалу
+## *3.*Додавання стилів до футеру
 
 Додайте рядки в кінець файлу `app/assets/stylesheets/application.css`:
 
@@ -78,9 +83,9 @@ footer {
 }
 {% endhighlight %}
 
-спробуйте додати більше різних стилів до підвалу.
+спробуйте додати більше різних стилів до футеру.
 
-## *4.*Додавання стилів для кнопки
+## *4.*Додавання стилів до кнопки
 
 Відкрийте [http://localhost:3000/ideas/new](http://localhost:3000/ideas/new) і знайдіть кнопку Create Idea.
 
@@ -98,4 +103,4 @@ footer {
 {% endhighlight %}
 
 
-**Тренер:** поясніть, як використовувати рамки в css, спробуйте змінити стиль кнопки, наприклад закруглити, додати тінь або колір і т.д.
+**Ментор:** поясни, як використовувати рамки в css, спробуйте змінити стиль кнопки - закруглити, додати тінь або колір і т.д.
