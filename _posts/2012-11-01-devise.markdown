@@ -10,6 +10,9 @@ permalink: devise
 
 *Updated by Ernesto Jimenez, [@ernesto_jimenez](https://twitter.com/ernesto_jimenez)*
 
+
+*Редагування та оновлення -  Aleksandra Klochko, [@aleksacastle](https://github.com/aleksacastle)*
+
 **Цей крок передбачає, що у вас вже створений** [**додаток Ideas**](/app).
 
 

@@ -4,10 +4,11 @@ title: Мініатюри для списку ідей
 permalink: thumbnails
 ---
 
-# Додавання зображень з Carrierwave
+# Зменшення зображень з Carrierwave
 
 *Created by Miha Filej, [@mfilej](https://twitter.com/mfilej)*
-
+*Переклад українською - Nastia, [@aladan](https://github.com/aladan)*
+*Редагування та оновлення -  Aleksandra Klochko, [@aleksacastle](https://github.com/aleksacastle)*
 ## *1.*Встановлення ImageMagick
 
 * OS X: виконай команду `brew install imagemagick`. Якщо в тебе немає команди `brew` - [встанови Homebrew тут][in-homebrew].

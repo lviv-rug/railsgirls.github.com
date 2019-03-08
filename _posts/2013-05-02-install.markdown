@@ -1,14 +1,18 @@
 ---
 layout: default
-title: Установка необхідних програм для Rails Girls
+title: Встановлення необхідних програм для Rails Girls
 permalink: install
 ---
 
 # Встановлення необхідних програм для Rails Girls
 
+*Переклад українською - Denys Kurets, [@denys281](https://github.com/denys281)*
+
+*Редагування та оновлення -  Aleksandra Klochko, [@aleksacastle](https://github.com/aleksacastle)*
+
 Для створення додатків на Ruby On Rails необхідно встановити деякі програми на твій комп'ютер.
 
-Обери інструкцію, що підходить для твоєї операційної системи. Не панікуй, якщо виникнуть якісь проблеми: повідом нам, і ми вирішимо їх разом.
+Обери інструкцію, що підходить для твоєї операційної системи. Не панікуй, якщо виникнуть якісь проблеми: повідом нам, та ми вирішимо їх разом.
 
 * [Налаштування для OS X](#налаштування-для-os-x)
 * [Налаштування для Windows](#налаштування-для-windows)
@@ -79,7 +83,7 @@ cp /usr/local/opt/curl-ca-bundle/share/ca-bundle.crt `ruby -ropenssl -e 'puts Op
 rbenv global 2.4.2
 {% endhighlight %}
 
-#### *3a6.* Встановлюємо rails:
+#### *3a6.* Встановлюємо Rails:
 
 {% highlight sh %}
 gem install rails --no-document
@@ -160,9 +164,9 @@ rails -v
 the system cannot find the path specified
 {% endhighlight %}
 
-Це може статись, якщо встановлювач не може коректно встановити шляхи для rails.
+Це може статись, якщо встановлювач не може коректно встановити шляхи для Rails.
 Нічого серйозного, ми можемо це вирішити різними способами, але найлегший, це встановити
-вручну rails gem за допомогою наступної команди:
+вручну Rails gem за допомогою наступної команди:
 
 {% highlight sh %}
 gem install rails bundler --no-document
@@ -239,7 +243,7 @@ gem -v
 
 ### Протягом bundle install
 
- `Gem::RemoteFetcher::FetchError: SSL_connect` також може виникати протягом `bundle install` при створенні нової rails аплікації.
+ `Gem::RemoteFetcher::FetchError: SSL_connect` також може виникати протягом `bundle install` при створенні нового Rails додатку.
 
 Ця помилка згадана тут [bit.ly/ruby-ssl](http://bit.ly/ruby-ssl). Для Windows користувачів актуальна інструкція [this GitHub gist](https://gist.github.com/867550). Вона перевірена та успішно вирішуєш `bundle install` помилку.
 

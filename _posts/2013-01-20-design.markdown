@@ -8,6 +8,8 @@ permalink: design
 
 *Created by Alex Liao, [@alexliao](http://bannka.com/alex)*
 
+*Редагування та оновлення -  Aleksandra Klochko, [@aleksacastle](https://github.com/aleksacastle)*
+
 Тепер наш додаток вже працює, але все ще виглядає не дуже гарно. Давай додамо трохи дизайну, щоб він виглядав як професійний вебсайт. Маленький спойлер: вкінці наш додаток має виглядати приблизно ось [так](http://railsgirlsapp.herokuapp.com/ideas).
 
 ## *1.*Вигляд додатку
